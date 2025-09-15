@@ -44,7 +44,7 @@
           :content-id="contentId"
           :aria-label="ariaLabel"
           @select="handleSelect"
-          @click.stop="elInputRef?.focus"
+          @click.stop="handleClickDropdown"
         >
           <template v-for="(_, name) in $slots" #[name]="slotProps">
             <slot :name="name" v-bind="slotProps" />
@@ -260,6 +260,10 @@ const handleSelect = (item: MentionOption) => {
     inputEl.focus()
     syncDropdownVisible()
   })
+}
+
+const handleClickDropdown = () => {
+  elInputRef.value?.focus()
 }
 
 const getInputEl = () =>
